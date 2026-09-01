@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permohonan Surat Sokongan Utiliti RSK Cendana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 min-h-screen py-6 px-4 sm:px-6">
+  <div class="max-w-xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200">
+    
+    <!-- Header -->
+    <div class="bg-slate-900 text-white p-6">
+      <div class="inline-block px-2.5 py-0.5 bg-blue-600 text-xs font-semibold rounded mb-2">RSK CENDANA</div>
+      <h1 class="text-xl font-bold tracking-tight">Permohonan Surat Sokongan Utiliti</h1>
+      <p class="text-xs text-slate-300 mt-1">Bagi urusan penukaran nama bil TNB / SAJ untuk lanjutan kontrak PKPJ.</p>
+    </div>
+
+    <!-- Alert / Status Message -->
+    <div id="statusMessage" class="hidden m-6 p-4 rounded-xl text-sm font-medium"></div>
+
+    <!-- Form -->
+    <form id="utilitiForm" class="p-6 space-y-4">
+      <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 leading-relaxed">
+        <strong>PENTING:</strong> Pastikan nama penyewa adalah sama seperti yang berdaftar dalam sistem pengurusan PKPJ.
+      </div>
+
+      <!-- Nama Penuh -->
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">Nama Penuh Penyewa (Ikut Sistem PKPJ) *</label>
+        <input type="text" id="nama" name="nama" required placeholder="Cth: AHMAD BIN ABDULLAH" 
+               class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm uppercase focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+      </div>
+
+      <!-- No IC & No Tel -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">No. Kad Pengenalan *</label>
+          <input type="text" id="no_ic" name="no_ic" required placeholder="Cth: 850101-01-5555" 
+                 class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">No. Telefon (WhatsApp) *</label>
+          <input type="tel" id="no_tel" name="no_tel" required placeholder="Cth: 012-3456789" 
+                 class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+        </div>
+      </div>
+
+      <!-- Blok & Unit -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">Blok *</label>
+          <select id="blok" name="blok" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+            <option value="">Pilih Blok</option>
+            <option value="Blok 1">Blok 1</option>
+            <option value="Blok 2">Blok 2</option>
+            <option value="Blok 3">Blok 3</option>
+            <option value="Blok 4">Blok 4</option>
+            <option value="Blok 5">Blok 5</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">No. Rumah / Unit *</label>
+          <input type="text" id="no_unit" name="no_unit" required placeholder="Cth: 03-12" 
+                 class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm uppercase focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+        </div>
+      </div>
+
+      <!-- Jenis Permohonan -->
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-700 mb-2">Permohonan Surat Sokongan Bagi *</label>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="jenis_utiliti" value="TNB & SAJ (Kedua-duanya)" required class="text-blue-600 focus:ring-blue-500">
+            <span class="text-sm font-medium text-slate-800">Kedua-duanya (TNB Elektrik & SAJ Air)</span>
+          </label>
+          <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="jenis_utiliti" value="TNB Sahaja (Elektrik)" class="text-blue-600 focus:ring-blue-500">
+            <span class="text-sm font-medium text-slate-800">Bil Elektrik (TNB) Sahaja</span>
+          </label>
+          <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition">
+            <input type="radio" name="jenis_utiliti" value="SAJ Sahaja (Air)" class="text-blue-600 focus:ring-blue-500">
+            <span class="text-sm font-medium text-slate-800">Bil Air (SAJ) Sahaja</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Nama Pemilik Lama -->
+      <div>
+        <label class="block text-xs font-semibold uppercase text-slate-700 mb-1">Nama Pemilik Lama Pada Bil Semasa (Jika Ada)</label>
+        <input type="text" id="nama_bil_lama" name="nama_bil_lama" placeholder="Cth: Arwah Bapa / Pemilik Asal" 
+               class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm uppercase focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition flex items-center justify-center gap-2 shadow">
+        <span>Hantar Permohonan</span>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // GANTIKAN URL INI DENGAN WEB APP URL DARI GOOGLE APPS SCRIPT ANDA
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7DI_H4ABI3Skjfozmarkco9QQf6EcdyhhZtWppjVhKtadPfzAFGJskpbxwZw0GfoBQQ/exec";
+
+    const form = document.getElementById('utilitiForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMessage = document.getElementById('statusMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sedang Menghantar...</span>';
+      statusMessage.className = "hidden";
+
+      const formData = {
+        nama: document.getElementById('nama').value.trim().toUpperCase(),
+        no_ic: document.getElementById('no_ic').value.trim(),
+        no_tel: document.getElementById('no_tel').value.trim(),
+        blok: document.getElementById('blok').value,
+        no_unit: document.getElementById('no_unit').value.trim().toUpperCase(),
+        jenis_utiliti: document.querySelector('input[name="jenis_utiliti"]:checked').value,
+        nama_bil_lama: document.getElementById('nama_bil_lama').value.trim().toUpperCase()
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        statusMessage.className = "m-6 p-4 rounded-xl text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+        statusMessage.innerHTML = "✅ <strong>Permohonan Berjaya Dihantar!</strong> Maklumat anda telah direkodkan untuk diserahkan kepada pihak PKPJ.";
+        form.reset();
+      } catch (err) {
+        statusMessage.className = "m-6 p-4 rounded-xl text-sm font-medium bg-rose-50 text-rose-800 border border-rose-200 block";
+        statusMessage.innerHTML = "❌ <strong>Ralat:</strong> Permohonan gagal dihantar. Sila cuba sebentar lagi.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Hantar Permohonan</span>';
+      }
+    });
+  </script>
+</body>
+</html>
